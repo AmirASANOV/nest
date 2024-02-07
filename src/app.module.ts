@@ -5,6 +5,9 @@ import { UsersModule } from "./users/users.module";
 import { ConfigModule } from "@nestjs/config";
 import { config } from "dotenv";
 import { User } from "./users/user.model";
+import { RolesModule } from "./roles/roles.module";
+import { Role } from "./roles/roles.model";
+import { UserRoles } from "./roles/user-roles.model";
 
 config();
 
@@ -24,17 +27,11 @@ config();
       username: process.env.POSTGRES_USER,
       password: process.env.POSTGRES_PASSWORD,
       database: process.env.POSTGRES_DB,
-
-      // host: "localhost",
-      // port: 5432,
-      // username: "postgres",
-      // password: "root",
-      // database: "nest-course",
-
-      models: [User],
+      models: [User, Role, UserRoles],
       autoLoadModels: true,
     }),
     UsersModule,
+    RolesModule,
   ],
 })
 export class AppModule {}
