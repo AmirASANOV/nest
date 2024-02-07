@@ -3,6 +3,10 @@ import { Module } from "@nestjs/common";
 import { SequelizeModule } from "@nestjs/sequelize";
 import { UsersModule } from "./users/users.module";
 import { ConfigModule } from "@nestjs/config";
+import { config } from "dotenv";
+import { User } from "./users/user.model";
+
+config();
 
 @Module({
   controllers: [],
@@ -10,6 +14,7 @@ import { ConfigModule } from "@nestjs/config";
   imports: [
     ConfigModule.forRoot({
       envFilePath: `.${process.env.NODE_ENV}.env`,
+      isGlobal: true,
     }),
     SequelizeModule.forRoot({
       dialect: "postgres",
@@ -21,12 +26,12 @@ import { ConfigModule } from "@nestjs/config";
       database: process.env.POSTGRES_DB,
 
       // host: "localhost",
-      // port: 5433,
+      // port: 5432,
       // username: "postgres",
       // password: "root",
       // database: "nest-course",
 
-      models: [],
+      models: [User],
       autoLoadModels: true,
     }),
     UsersModule,
