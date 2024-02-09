@@ -35,7 +35,7 @@ export class User extends Model<User, UserCreationAttrs> {
 
   @ApiProperty({ example: "123123123", description: "password" })
   @Column({
-    type: DataType.INTEGER,
+    type: DataType.STRING,
     allowNull: false,
   })
   password: string;
@@ -49,7 +49,7 @@ export class User extends Model<User, UserCreationAttrs> {
 
   @ApiProperty({ example: "За спам", description: "Причина:" })
   @Column({
-    type: DataType.BOOLEAN,
+    type: DataType.STRING,
     allowNull: true,
   })
   banReason: string;

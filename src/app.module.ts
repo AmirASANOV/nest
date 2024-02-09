@@ -4,7 +4,7 @@ import { SequelizeModule } from "@nestjs/sequelize";
 import { UsersModule } from "./users/users.module";
 import { ConfigModule } from "@nestjs/config";
 import { config } from "dotenv";
-import { User } from "./users/user.model";
+import { User } from "./users/users.model";
 import { RolesModule } from "./roles/roles.module";
 import { Role } from "./roles/roles.model";
 import { UserRoles } from "./roles/user-roles.model";
